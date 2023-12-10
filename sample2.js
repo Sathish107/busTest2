@@ -49,7 +49,7 @@ const updateLocation =  () => {
         statusCode=400
         markLocation(); 
     }
-    setTimeout(updateLocation, 1000);
+    setTimeout(updateLocation, 2000);
 
 };
 
