@@ -26,7 +26,7 @@ navigator.geolocation.getCurrentPosition((position)=>{
     map = L.map('map').setView([slat,slong],13)
 
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 20 
+        maxZoom: 19 
     }).addTo(map);  
 
     map.on('click',async (e)=>{
@@ -44,13 +44,13 @@ navigator.geolocation.getCurrentPosition((position)=>{
 
 })
 
+var setTimeId
 const updateLocation =  () => {
     if(statusCode===200){
         statusCode=400
         markLocation(); 
     }
-    setTimeout(updateLocation, 1000);
-
+    setTimeId=setTimeout(updateLocation, 1000);
 };
 
 
@@ -120,6 +120,8 @@ const markLocation= ()=>{
             setTimeout(()=>{
                 plotNewCoord()
             },4000)
+
+            clearTimeout(setTimeId)
         }
 
         
